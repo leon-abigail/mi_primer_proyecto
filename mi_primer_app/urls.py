@@ -1,9 +1,9 @@
-
 from django.urls import path
-from django.http import HttpResponse
-from .import views
+from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('hola_mundo/', views.hola_mundo, name='hola_mundo'),
+    path('productos/', views.listar_productos, name='listar_productos'),
+    path('productos/nuevo/', views.cargar_producto, name='cargar_producto'),
+
 ]

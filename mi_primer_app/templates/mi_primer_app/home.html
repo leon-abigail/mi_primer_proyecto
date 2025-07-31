@@ -1,125 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEPERINA | Productos Naturales</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Quicksand:wght@400;600&display=swap');
 
-    :root {
-      --verde-suave: #5E6B56;  /* similar al fondo del logo */
-      --beige: #E8D9C0;
-      --dorado-suave: #D6B28F;
-      --fondo-claro: #F8F5F0;
-    }
+<style>
+  body {
+    background-color: #f0fdf4; /* verde pastel muy claro */
+    font-family: 'Segoe UI', sans-serif;
+    color: #2e7d32;
+    padding: 20px;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-color: var(--fondo-claro);
-      color: var(--verde-suave);
-    }
+  h2 {
+    text-align: center;
+    color: #388e3c;
+    margin-bottom: 30px;
+  }
 
-    header {
-      background-color: var(--verde-suave);
-      color: var(--beige);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .producto {
+    background-color: #e6f4ea;
+    border: 1px solid #c8e6c9;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px rgba(46, 125, 50, 0.1);
+  }
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin: 0;
-      letter-spacing: 1px;
-    }
+  .producto h3 {
+    margin-top: 0;
+    color: #1b5e20;
+    font-size: 1.3em;
+  }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: var(--beige);
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
+  .producto p {
+    margin: 6px 0;
+    font-size: 0.95em;
+  }
 
-    nav a:hover {
-      color: var(--dorado-suave);
-    }
+  .vacio {
+    text-align: center;
+    font-style: italic;
+    color: #a5d6a7;
+    font-size: 1.1em;
+    margin-top: 40px;
+  }
+</style>
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      background: var(--verde-suave);
-      color: var(--beige);
-    }
+<h2>🌿 Nuestros Productos 🌿</h2>
 
-    .hero h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8em;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 1.1em;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .boton {
-      margin-top: 30px;
-      background-color: var(--beige);
-      color: var(--verde-suave);
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .boton:hover {
-      background-color: var(--dorado-suave);
-      color: white;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: var(--verde-suave);
-      color: var(--beige);
-      font-size: 0.9em;
-    }
-
-    .logo {
-      max-width: 100px;
-      border-radius: 50%;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>PEPERINA</h1>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Productos</a>
-      <a href="#">Nosotros</a>
-      <a href="#">Contacto</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <img class="logo" src="tu-logo.jpg" alt="Logo Peperina" />
-    <h2>Productos Naturales</h2>
-    <p>Conectamos con la naturaleza a través de productos hechos con amor y respeto por el entorno.</p>
-    <a class="boton" href="#">Ver productos</a>
-  </section>
-
-  <footer>
-    © 2025 PEPERINA - Productos Naturales. Todos los derechos reservados.
-  </footer>
-
-</body>
-</html>
+{% for producto in productos %}
+  <div class="producto">
+    <h3>{{ producto.nombre }}</h3>
+    <p>{{ producto.descripcion }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Categoría:</strong> {{ producto.categoria.nombre }}</p>
+  </div>
+{% empty %}
+  <p class="vacio">No hay productos disponibles por el momento.</p>
+{% endfor %}

@@ -1,0 +1,23 @@
+<!-- templates/mi_primer_app/listar_productos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Productos Disponibles</h1>
+
+    <ul>
+        {% for producto in productos %}
+            <li>
+                <strong>{{ producto.nombre }}</strong> - {{ producto.descripcion }} ({{ producto.precio }} ARS)
+            </li>
+        {% empty %}
+            <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">Volver al inicio</a>
+</body>
+</html>
